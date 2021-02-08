@@ -15,7 +15,7 @@ brew install yarn
 ## Установка
 Производится в корень базового проекта react-native 
 ```
-yarn add simple-react-native-clone
+yarn add simple-react-native-clone --dev
 ```
 Нужно создать конфигурационный файл рядом с package.json 
 ```
