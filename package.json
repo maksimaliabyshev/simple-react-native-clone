@@ -37,7 +37,7 @@
     "files": [
         "index.js",
         "README.md",
-        "README_ru.md"
+        "README_ru-RU.md"
     ],
     "homepage": "https://github.com/truepatch/simple-react-native-clone",
     "repository": {
