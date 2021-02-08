@@ -545,22 +545,26 @@ program
                 chalk.magentaBright('NAME PROJECT: '),
                 chalk.green(clone.nameProject),
             );
-            exec('yarn check --verify-tree').code !== 0 ||
-                copyNodeModules(
-                    clone.sourceFull,
-                    clone.destFull,
-                    { devDependencies: false },
-                    (err, results) => {
-                        if (err) {
-                            console.error('ERROR Copy node_modules: ', err);
-                            return;
-                        }
-                        // Object.keys(results).forEach(name => {
-                        //     const version = results[name];
-                        //     console.log(`Package name: ${name}, version: ${version}`);
-                        // });
-                    },
-                );
+            // if (!fs.existsSync(clone.destFull + '/node_modules')) {
+                // warn("copyNodeModules START....")
+                // copyNodeModules(
+                //     clone.sourceFull,
+                //     clone.destFull,
+                //     { devDependencies: false },
+                //     (err, results) => {
+                //         if (err) {
+                //             console.error('ERROR Copy node_modules: ', err);
+                //             return;
+                //         }
+                //         // Object.keys(results).forEach(name => {
+                //         //     const version = results[name];
+                //         //     console.log(`Package name: ${name}, version: ${version}`);
+                //         // });
+                //     },
+                // );
+                // exec(`npx copy-production-deps ${clone.sourceFull} ${clone.destFull}`);
+                // warn("copyNodeModules END....")
+            // }
 
             shell.cd(clone.destFull).code !== 0 && exit(1);
             if (exec('yarn check --verify-tree').code !== 0) {
