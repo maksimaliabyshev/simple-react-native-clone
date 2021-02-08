@@ -146,7 +146,8 @@ replace_global: [
 ],
 ```
 Правила замены основаны на модуле [replace-in-file
-](https://www.npmjs.com/package/replace-in-file) 
+](https://www.npmjs.com/package/replace-in-file)
+
 Точно так же это работает и для конкретного клона.
 
 ### Сборка всех клонов
