@@ -32,7 +32,7 @@ You need to create a config file next to package.json
 
 Basic configuration example [clone.config.js](./clone.config.js)
 
-## Запуск
+## Launch
 
 Add quick start scripts to package.json
 
@@ -77,7 +77,7 @@ yarn build name -i    // build one clone for the ios platform
 yarn build -ia        // prepare for build, but not build
 ```
 
-## Настройка
+## Settings
 
 Specify the data of the base project from which the cloning will be performed.
 
