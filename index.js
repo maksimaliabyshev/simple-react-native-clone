@@ -522,7 +522,7 @@ program
     )
     .option('-i, --ios', 'build only ios platform')
     .option('-a, --android', 'build only android platform')
-    .action((name, options) => {
+    .action(async (name, options) => {
         let build_ios_flag = !options.android;
         let build_android_flag = !options.ios;
         console.log('build_ios_flag=', build_ios_flag);
