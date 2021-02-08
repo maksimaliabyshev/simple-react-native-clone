@@ -17,6 +17,7 @@ const copyNodeModules = require('copy-node-modules');
 const package = require('./package.json');
 // const cloneConfig = require(process.cwd() +'./clone.config.js');
 // const cloneConfig = require('./clone.config.js');
+const cloneConfig = config_require('clone.config.js');
 
 const exit = process.exit;
 const error = (...message) =>
@@ -35,17 +36,17 @@ const log = (...message) =>
         chalk.magenta(' ', ...message, ' '),
     );
 
-// function module_exists(name) {
-try {
-    const configPath = shell.pwd() + '/' + 'clone.config.js'; //require.resolve(name);
-    console.log(configPath);
-    return (cloneConfig = require(configPath));
-} catch (e) {
-    error('Needs config file in root base project: clone.config.js');
-    exit(0);
-    // return false;
+function config_require(name) {
+    try {
+        const configPath = shell.pwd() + '/' + name; //require.resolve(name);
+        console.log(configPath);
+        return require(configPath);
+    } catch (e) {
+        error('Needs config file in root base project: clone.config.js');
+        exit(0);
+        // return false;
+    }
 }
-// }
 // if (module_exists('./clone.json')) {
 //     const cloneConfig = require('./clone.json');
 // } else {
@@ -470,7 +471,7 @@ async function renameProjectOLD(project) {
 }
 
 /** INIT COMMANDS */
-program.version(package.version, '-v, --version', ' current version');
+program.version(package.version, '-v, --version', 'current version');
 
 program
     .command('clone [name]')
@@ -489,10 +490,19 @@ program
             if (name && !(name == clone.name || name == clone.nameProject)) {
                 continue;
             }
-            log(
-                '\n\n//////////////////////// JSON CLONE ////////////////////////',
-                clone,
+            console.log(
+                chalk.magentaBright(
+                    '\n\n////////////////////  CLONING  ////////////////////',
+                ),
             );
+            console.log(
+                chalk.magentaBright('NAME: '),
+                chalk.green(clone.name),
+                '    ',
+                chalk.magentaBright('NAME PROJECT: '),
+                chalk.green(clone.nameProject),
+            );
+            console.log('Current clone JSON:', clone);
             await copyProject(clone);
             await renameProject(clone);
         }
@@ -523,10 +533,18 @@ program
             if (name && !(name == clone.name || name == clone.nameProject)) {
                 continue;
             }
-            // log(
-            //     '\n\n//////////////////////// JSON CLONE ////////////////////////',
-            //     clone,
-            // );
+            console.log(
+                chalk.magentaBright(
+                    '\n\n//////////////////// BUILD CLONE ////////////////////',
+                ),
+            );
+            console.log(
+                chalk.magentaBright('NAME: '),
+                chalk.green(clone.name),
+                '    ',
+                chalk.magentaBright('NAME PROJECT: '),
+                chalk.green(clone.nameProject),
+            );
             exec('yarn check --verify-tree').code !== 0 ||
                 copyNodeModules(
                     clone.sourceFull,
@@ -546,10 +564,10 @@ program
 
             shell.cd(clone.destFull).code !== 0 && exit(1);
             if (exec('yarn check --verify-tree').code !== 0) {
-                exec('yarn install --offline --production').code !== 0 ||
-                    exec('yarn install --production');
-                // exec('yarn install --offline').code !== 0 ||
-                //     error('yarn install --offline');
+                // exec('yarn install --offline --production').code !== 0 ||
+                //     exec('yarn install --production');
+                exec('yarn install --offline').code !== 0 ||
+                    exec('yarn install');
                 console.log(chalk.green('Install node_modules complete'));
                 exec('npx pod-install').code !== 0;
                 // || error('npx pod-install');
