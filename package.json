@@ -1,9 +1,9 @@
 {
-    "name": "react-native-clone-for-deploy",
+    "name": "simple-react-native-clone",
     "version": "1.1.0",
     "private": false,
     "bin": {
-        "react-native-clone-for-deploy": "index.js"
+        "simple-react-native-clone": "index.js"
     },
     "description": "Clones similar react-native projects with minor changes",
     "main": "index.js",
@@ -29,28 +29,29 @@
         "simple-git": "^2.34.2"
     },
     "devDependencies": {},
-    "//": {
-        "publishConfig": {
-            "registry": "https://registry.npmjs.org/",
-            "access": "public"
-        }
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     },
     "author": "Maksim Alyabyshev",
     "files": [
         "index.js",
-        "README.md"
+        "README.md",
+        "README_ru.md"
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/truepatch/react-native-clone-for-deploy.git"
+        "url": "git+https://github.com/truepatch/simple-react-native-clone.git"
     },
     "keywords": [
         "react-native clone project",
+        "react-native dublicate project",
         "react-native rename project",
+        "react-native mass build project",
         "react-native deploy project"
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/truepatch/react-native-clone-for-deploy/issues"
+        "url": "https://github.com/truepatch/simple-react-native-clone/issues"
     }
 }

@@ -16,7 +16,7 @@ const replace = require('replace-in-file');
 const copyNodeModules = require('copy-node-modules');
 const package = require('./package.json');
 // const cloneConfig = require(process.cwd() +'./clone.config.js');
-const cloneConfig = require('./clone.config.js');
+// const cloneConfig = require('./clone.config.js');
 
 const exit = process.exit;
 const error = (...message) =>
@@ -36,17 +36,20 @@ const log = (...message) =>
     );
 
 // function module_exists(name) {
-//     try {
-//         return require.resolve(name);
-//     } catch (e) {
-//         return false;
-//     }
+try {
+    const configPath = shell.pwd() + '/' + 'clone.config.js'; //require.resolve(name);
+    console.log(configPath);
+    return (cloneConfig = require(configPath));
+} catch (e) {
+    error('Needs config file in root base project: clone.config.js');
+    exit(0);
+    // return false;
+}
 // }
 // if (module_exists('./clone.json')) {
 //     const cloneConfig = require('./clone.json');
 // } else {
-//     error('Needs config file in root base project:  clone.json');
-//     exit(0);
+
 // }
 
 console.log(chalk.cyan(figlet.textSync('Clone React Native Project')));
