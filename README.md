@@ -1,2 +1,3 @@
-# react-native-clone-for-deploy
- Mass clone react-native project
+# simple-react-native-clone
+
+Mass clone react-native project
