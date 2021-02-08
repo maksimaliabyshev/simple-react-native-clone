@@ -1,6 +1,6 @@
 {
     "name": "simple-react-native-clone",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "private": false,
     "bin": {
         "simple-rn-clone": "index.js"
