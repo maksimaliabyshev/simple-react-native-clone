@@ -160,7 +160,7 @@ clone: [
 ],
 ```
 
-Правила копирования реализованы на модуле [copy-dir](https://www.npmjs.com/package/copy-dir)
+Правила копирования реализованы модулем [copy-dir](https://www.npmjs.com/package/copy-dir)
 
 ### Замена
 
@@ -176,9 +176,8 @@ replace_global: [
 ],
 ```
 
-Правила замены реализованы на модуле [replace-in-file
+Правила замены реализованы модулем [replace-in-file
 ](https://www.npmjs.com/package/replace-in-file)
-
 Точно так же это работает и для конкретного клона.
 
 ### Сборка всех клонов

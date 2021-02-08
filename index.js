@@ -546,24 +546,24 @@ program
                 chalk.green(clone.nameProject),
             );
             // if (!fs.existsSync(clone.destFull + '/node_modules')) {
-                // warn("copyNodeModules START....")
-                // copyNodeModules(
-                //     clone.sourceFull,
-                //     clone.destFull,
-                //     { devDependencies: false },
-                //     (err, results) => {
-                //         if (err) {
-                //             console.error('ERROR Copy node_modules: ', err);
-                //             return;
-                //         }
-                //         // Object.keys(results).forEach(name => {
-                //         //     const version = results[name];
-                //         //     console.log(`Package name: ${name}, version: ${version}`);
-                //         // });
-                //     },
-                // );
-                // exec(`npx copy-production-deps ${clone.sourceFull} ${clone.destFull}`);
-                // warn("copyNodeModules END....")
+            // warn("copyNodeModules START....")
+            // copyNodeModules(
+            //     clone.sourceFull,
+            //     clone.destFull,
+            //     { devDependencies: false },
+            //     (err, results) => {
+            //         if (err) {
+            //             console.error('ERROR Copy node_modules: ', err);
+            //             return;
+            //         }
+            //         // Object.keys(results).forEach(name => {
+            //         //     const version = results[name];
+            //         //     console.log(`Package name: ${name}, version: ${version}`);
+            //         // });
+            //     },
+            // );
+            // exec(`npx copy-production-deps ${clone.sourceFull} ${clone.destFull}`);
+            // warn("copyNodeModules END....")
             // }
 
             shell.cd(clone.destFull).code !== 0 && exit(1);
@@ -582,8 +582,8 @@ program
                 cloneConfig.build_ios.map(cmd => {
                     let strcmd = replaceCloneVariable(cmd, clone);
                     console.log(chalk.cyan(strcmd));
-                    if (strcmd == 'cd ./ios') {
-                        shell.cd('./ios');
+                    if (strcmd.substr(0, 2) == 'cd') {
+                        shell.cd(strcmd.match(/(?<=cd\s+).+/i)[0]);
                     } else {
                         shell.exec(
                             strcmd,
@@ -598,8 +598,8 @@ program
                 cloneConfig.build_android.map(cmd => {
                     let strcmd = replaceCloneVariable(cmd, clone);
                     console.log(chalk.cyan(strcmd));
-                    if (strcmd == 'cd ./android') {
-                        shell.cd('./android');
+                    if (strcmd.substr(0, 2) == 'cd') {
+                        shell.cd(strcmd.match(/(?<=cd\s+).+/i)[0]);
                     } else {
                         shell.exec(
                             strcmd,

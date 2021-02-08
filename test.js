@@ -5,11 +5,9 @@ const { join } = require('path');
 const path = require('path');
 const fs = require('fs');
 const fsExtra = require('fs-extra');
-const inquirer = require('inquirer');
 const chalk = require('chalk');
 const shell = require('shelljs');
 const figlet = require('figlet');
-const loading = require('loading-cli');
 const os = require('os');
 const package = require('./package.json');
 const simpleGit = require('simple-git');
@@ -277,13 +275,19 @@ if (clone.source == join('./') || !clone.source) {
 //     return str;
 // }
 
-shell.cd(clone.destFull);
-shell.exec(
-    'yarn install --offline --production',
-    // {
-    //     shell: '/bin/bash',
-    // },
-    // stdout => {
-    //     console.log(stdout);
-    // },
-); //.stdout;
+// shell.cd(clone.destFull);
+// shell.exec(
+//     'yarn install --offline --production',
+//     // {
+//     //     shell: '/bin/bash',
+//     // },
+//     // stdout => {
+//     //     console.log(stdout);
+//     // },
+// );
+
+console.log('cd ./ios/asddsd/sdsd'.match(/(?<=cd\s).+/i)[0]);
+
+let str = 'cd ./ios/asddsd/sdsd';
+console.log(str.substr(0, 2));
+console.log(str.substr(3));
