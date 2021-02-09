@@ -1,6 +1,6 @@
 {
     "name": "simple-react-native-clone",
-    "version": "1.1.7",
+    "version": "1.2.0",
     "private": false,
     "bin": {
         "simple-rn-clone": "index.js"
@@ -45,11 +45,11 @@
         "url": "git+https://github.com/truepatch/simple-react-native-clone.git"
     },
     "keywords": [
-        "react-native clone project",
-        "react-native dublicate project",
-        "react-native rename project",
-        "react-native mass build project",
-        "react-native deploy project"
+        "react-native clone",
+        "react-native dublicate",
+        "react-native rename",
+        "react-native bulk build",
+        "react-native deploy"
     ],
     "license": "MIT",
     "bugs": {

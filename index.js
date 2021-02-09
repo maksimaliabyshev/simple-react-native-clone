@@ -582,7 +582,7 @@ program
                 cloneConfig.build_ios.map(cmd => {
                     let strcmd = replaceCloneVariable(cmd, clone);
                     console.log(chalk.cyan(strcmd));
-                    if (strcmd.substr(0, 2) == 'cd') {
+                    if (strcmd.substr(0, 3) == 'cd ') {
                         shell.cd(strcmd.match(/(?<=cd\s+).+/i)[0]);
                     } else {
                         shell.exec(
@@ -598,7 +598,7 @@ program
                 cloneConfig.build_android.map(cmd => {
                     let strcmd = replaceCloneVariable(cmd, clone);
                     console.log(chalk.cyan(strcmd));
-                    if (strcmd.substr(0, 2) == 'cd') {
+                    if (strcmd.substr(0, 3) == 'cd ') {
                         shell.cd(strcmd.match(/(?<=cd\s+).+/i)[0]);
                     } else {
                         shell.exec(

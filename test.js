@@ -286,8 +286,8 @@ if (clone.source == join('./') || !clone.source) {
 //     // },
 // );
 
-console.log('cd ./ios/asddsd/sdsd'.match(/(?<=cd\s).+/i)[0]);
+// console.log('cd ./ios/asddsd/sdsd'.match(/(?<=cd\s).+/i)[0]);
 
-let str = 'cd ./ios/asddsd/sdsd';
-console.log(str.substr(0, 2));
-console.log(str.substr(3));
+// let str = 'cd ./ios/asddsd/sdsd';
+// console.log(str.substr(0, 3));
+// console.log(str.substr(4));
