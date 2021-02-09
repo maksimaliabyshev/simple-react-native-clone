@@ -1,6 +1,6 @@
 # simple-react-native-clone
 
-Массовое клонирование проекта на основе react-native, для поддержки однотипных приложений. Язык [🇺🇸](./README.md) / [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281937%E2%80%931954%29.svg/24px-Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281937%E2%80%931954%29.svg.png"/>](./README_ru-RU.md)
+Массовое клонирование проекта на основе react-native, для поддержки однотипных приложений. Язык [🇺🇸](./README.md) / [<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281954%E2%80%931991%29.svg" width="24"/>](./README_ru-RU.md)
 
 ## Требуемые утилиты
 
