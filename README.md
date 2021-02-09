@@ -1,6 +1,6 @@
 # simple-react-native-clone
 
-Bulk cloning of a react-native based project to support similar applications.
+Bulk cloning of a react-native based project to support similar applications. Language [🇺🇸](./README.md) / [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281937%E2%80%931954%29.svg/16px-Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281937%E2%80%931954%29.svg.png"/>](./README_ru-RU.md)
 
 ## Required
 
@@ -169,9 +169,9 @@ Replacing lines within files or all files in the target directory, for all clone
 ```js
 replace_global: [
     {
-        files: './android/app/build.gradle',       // целевой файл или папка для изменения
-        from: '/(applicationId\\s*")(.+)(")/giu',  // RegExp для поиска
-        to: ['$1${clone.package}$3'],              // на что заменить
+        files: './android/app/build.gradle',       // target file or folder to change
+        from: '/(applicationId\\s*")(.+)(")/giu',  // RegExp for search
+        to: ['$1${clone.package}$3'],              // what to replace
     },
 ],
 ```
