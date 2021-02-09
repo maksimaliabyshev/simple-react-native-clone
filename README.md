@@ -1,6 +1,6 @@
 # simple-react-native-clone
 
-Bulk cloning of a react-native based project to support similar applications. Language [🇺🇸](./README.md) / [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281937%E2%80%931954%29.svg/16px-Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281937%E2%80%931954%29.svg.png"/>](./README_ru-RU.md)
+Bulk cloning of a react-native based project to support similar applications. Language [🇺🇸](./README.md) / [<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281937%E2%80%931954%29.svg/20px-Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281937%E2%80%931954%29.svg.png"/>](./README_ru-RU.md)
 
 ## Required
 
