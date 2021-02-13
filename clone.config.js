@@ -5,7 +5,7 @@ const cloneConfig = {
         package: 'com.rn_starter',
     },
     options: {
-        remove: true, // remove old cloned files, before new command clone
+        remove: false, // remove old cloned files, before new command clone
     },
     build_ios: ['npx react-native run-ios --configuration "Release"'],
     build_android: [
