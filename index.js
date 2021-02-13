@@ -53,7 +53,7 @@ function config_require(name) {
 
 // }
 
-console.log(chalk.cyan(figlet.textSync('Simple React Native Clone')));
+console.log(chalk.cyan(figlet.textSync('Clone React Native Project')));
 const sleep = () => new Promise(resolve => setTimeout(() => resolve(), 500));
 
 //////////////////// Init variables clone config ////////////////////////
