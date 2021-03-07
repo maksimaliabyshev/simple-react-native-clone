@@ -74,7 +74,7 @@ Additional launch options `-i`-ios `-a`-android
 ```bash
 yarn build -a         // collect everything, only for the android platform
 yarn build name -i    // build one clone for the ios platform
-yarn build -ia        // prepare for build, but not build
+yarn build -ai        // prepare for build, but not build
 ```
 
 ## Settings
