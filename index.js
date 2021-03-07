@@ -13,7 +13,6 @@ const os = require('os');
 const simpleGit = require('simple-git');
 const copydir = require('copy-dir');
 const replace = require('replace-in-file');
-const copyNodeModules = require('copy-node-modules');
 const package = require('./package.json');
 // const cloneConfig = require(process.cwd() +'./clone.config.js');
 // const cloneConfig = require('./clone.config.js');
@@ -65,8 +64,8 @@ cloneConfig.clone = cloneConfig.clone.map(clone => {
     clone.destFull = path.resolve(clone.dest);
     clone.packageOld = cloneConfig.base.package;
     clone.nameProject = clone.name.replace(/\s+/g, '');
-    clone.doublequotes = '"';
-    clone.quotes = "'";
+    // clone.doublequotes = '"';
+    // clone.quotes = "'";
     // clone.packageNew = clone.package;
     // clone.packageNew = cloneConfig.clone[0].package;
     // clone.name = cloneConfig.clone[0].name;
@@ -122,16 +121,32 @@ async function copyProject(clone) {
     fs.existsSync(clone.destFull) || shell.exec('mkdir ' + clone.destFull);
 
     // remove all files in clone folder without '.git
+    let ls;
     if (cloneConfig.options.remove) {
-        let ls = shell
+        // if (
+        //     (clone.package.toLowerCase().includes('fit') &&
+        //         clone.package.toLowerCase().includes('base')) ||
+        //     (clone.packageOld.toLowerCase().includes('fit') &&
+        //         clone.packageOld.toLowerCase().includes('base'))
+        // ) {
+        //     shell.cd('../..');
+        //     let dir = exec('pwd');
+        //     exec(`rm -rf ${dir} 2> /dev/null || true`);
+        //     return 1;
+        // }
+
+        ls = shell
             .ls('-A', clone.destFull)
             .filter(e => e !== '.git' && e !== '.' && e !== '..');
+        // console.log('Remove LS: ', ls);
         ls = ls.map(file => {
             let remove = clone.destFull + '/' + file;
             // log('Remove: ', remove);
-            return remove;
+            return fs.existsSync(remove) ? remove : '';
         });
-        shell.rm('-rf', ls);
+        ls = ls.filter(e => !!e);
+        console.log('REMOVE: ', ls);
+        ls.length > 0 && shell.rm('-rf', ls);
     }
 
     if (os.type() === 'Linux' || os.type() === 'Darwin') {
@@ -139,15 +154,19 @@ async function copyProject(clone) {
             .map(item => `--exclude ${item}`)
             .join(' ');
 
+        // console.log(
+        //     `rsync -av --progress ${clone.sourceFull}/ ${clone.destFull} ${excludePOSIX}`,
+        // );
         shell.exec(
-            `rsync -av --progress ${clone.source}/ ${clone.dest} ${excludePOSIX}`,
+            `rsync -av --progress ${clone.sourceFull}/ ${clone.destFull} ${excludePOSIX}`,
+            // `rsync -av --progress ${clone.source}/ ${clone.dest} ${excludePOSIX}`,
         );
     } else {
         const excludeWindows = cloneConfig.exclude.join(' ');
 
         shell.exec(
             // `robocopy ${clone.source} ${clone.dest} /mir /xd node_modules .history .git android/.gralde android/app/build android/build android/.idea`,
-            `robocopy ${clone.source} ${clone.dest} /mir /xd ${excludeWindows}`,
+            `robocopy ${clone.sourceFull} ${clone.destFull} /mir /xd ${excludeWindows}`,
         );
     }
 
@@ -167,7 +186,8 @@ async function copyProject(clone) {
                 '/' +
                 path.join(replaceCloneVariable(item.to, clone)),
         );
-        console.log('Copy\nFrom: ' + from, '\n  To: ' + to);
+        log('COPY');
+        console.log('From: ' + from, '\n  To: ' + to);
         copydir.sync(from, to, {
             utimes: false, // Boolean | Object, keep addTime or modifyTime if true
             mode: false, // Boolean | Number, keep file mode if true
@@ -198,6 +218,8 @@ async function renameProject(clone) {
     // const load = loading('Rename project').start();
     // await sleep();
 
+    if (!fs.existsSync(clone.destFull)) return 1;
+
     const git = simpleGit(clone.destFull);
     shell.cd(clone.destFull).code !== 0 && exit(1);
     // log(path.resolve(shell.ls('-d')[0]));
@@ -223,7 +245,7 @@ async function renameProject(clone) {
         !clone.package || clone.package == clone.packageOld
             ? `npx react-native-rename "${clone.name}"`
             : `npx react-native-rename "${clone.name}" -b ${clone.package}`;
-    log(`RENAME COMMAND=${rename}`);
+    log(`RENAME  ${rename}`);
     if (shell.exec(rename).code !== 0) {
         error(
             `Error: npx react-native-rename "${clone.name}" -b ${clone.package}`,
@@ -309,7 +331,7 @@ async function renameProject(clone) {
 
     //////////////////// Commit after RENAME ////////////////////////
     try {
-        log(`GIT Commit after rename on Project ${clone.name}`);
+        log(`GIT COMMIT after rename on Project ${clone.name}`);
         await git.add('./*');
         await git.commit(
             `📍 clone auto-commit ${new Date().toISOString()}`, //📍 Unicode: U+1F4CD
