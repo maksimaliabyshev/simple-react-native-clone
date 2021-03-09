@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/simple-react-native-clone)](https://www.npmjs.com/package/simple-react-native-clone) ![npm](https://img.shields.io/npm/dt/simple-react-native-clone?color=red&label=downloads) ![NPM](https://img.shields.io/npm/l/simple-react-native-clone)
+[![npm](https://img.shields.io/npm/v/simple-react-native-clone)](https://www.npmjs.com/package/simple-react-native-clone) [![npm](https://img.shields.io/npm/dt/simple-react-native-clone?color=red&label=downloads)]() [![NPM](https://img.shields.io/npm/l/simple-react-native-clone)]()
 
 # simple-react-native-clone
 
