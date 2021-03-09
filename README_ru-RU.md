@@ -1,3 +1,5 @@
+![npm](https://img.shields.io/npm/v/simple-react-native-clone) ![npm](https://img.shields.io/npm/dt/simple-react-native-clone?color=red&label=downloads) ![NPM](https://img.shields.io/npm/l/simple-react-native-clone)
+
 # simple-react-native-clone
 
 Массовое клонирование проекта на основе react-native, для поддержки однотипных приложений. Язык [🇺🇸](./README.md) / [<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Flag_of_the_Russian_Soviet_Federative_Socialist_Republic_%281954%E2%80%931991%29.svg" width="28"/>](./README_ru-RU.md)
